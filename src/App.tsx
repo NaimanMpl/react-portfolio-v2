@@ -1,9 +1,24 @@
+import { AnimatePresence } from "framer-motion";
+import LocomotiveScroll from "locomotive-scroll";
+import { useEffect } from "react";
+import { Route, BrowserRouter as Router, Routes, useLocation } from "react-router-dom";
+import Header from "./components/Header";
+import Home from "./pages/Home";
+
 function App() {
 
+  useEffect(() => {
+    const scroll = new LocomotiveScroll();
+  }, []);
+
   return (
-    <>
-      <h1 className="text-3xl text-red-500">Hello, World!</h1>
-    </>
+    <AnimatePresence mode="wait">
+      <Router>
+          <Routes>
+            <Route index element={<Home />} />
+          </Routes>
+      </Router>
+    </AnimatePresence>
   )
 }
 
