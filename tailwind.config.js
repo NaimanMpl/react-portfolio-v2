@@ -10,10 +10,14 @@ export default {
         "primary" : "#21291B",
         "white" : "#F4F4F4",
         "black" : "#121212",
+        'green-550' : "#34A847",
         gray: "#7A7A7A"
       },
       spacing: {
         header: '2.5rem'
+      },
+      fontFamily: {
+        'serif': ['Prata', 'serif']
       }
     },
   },
