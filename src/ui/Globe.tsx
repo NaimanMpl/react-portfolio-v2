@@ -1,5 +1,5 @@
-import React from 'react'
-import './styles/Globe.scss'
+import React from 'react';
+import './styles/Globe.scss';
 
 const Circle = () => {
   return (
@@ -10,9 +10,9 @@ const Circle = () => {
   )
 }
 
-const Globe = () => {
+const Globe = React.forwardRef((props, ref: any) => {
   return (
-    <div className='glob-wrap relative w-full h-full'>
+    <div ref={ref} className='glob-wrap relative w-full h-full'>
       <div className="glob-container block w-full h-full overflow-hidden">
         <Circle />
         <Circle />
@@ -22,6 +22,6 @@ const Globe = () => {
       </div>
     </div>
   )
-}
+});
 
 export default Globe

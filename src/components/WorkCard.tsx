@@ -13,7 +13,7 @@ const WorkCard = ({ href, img, title, description }: WorkCardProps) => {
   return (
     <div>
       <Link to={href}>
-        <img className='w-full max-h-[22rem] object-cover rounded-lg' src={img} alt={title} />
+        <img className='w-full max-h-[24rem] object-cover rounded-lg' src={img} alt={title} />
       </Link>
       <div className='flex justify-between items-center mt-4'>
         <div className='flex items-center gap-4'>
