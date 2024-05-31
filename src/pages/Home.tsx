@@ -2,10 +2,13 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import Header from '../components/Header';
 import HorizontalBar from '../components/HorizontalBar';
-import AnimatedParagraph from '../ui/AnimatedParagraph';
 import AnimatedTitle from '../ui/AnimatedTitle';
 import Globe from '../ui/Globe';
 import PageTitle from '../ui/PageTitle';
+import WorkCard from '../components/WorkCard';
+import minecraftBg from '../assets/minecraft_bg.jpg';
+import evylBg from '../assets/evyl.png';
+import AnimatedParagraph from '../ui/AnimatedParagraph';
 
 const Home = () => {
 
@@ -25,7 +28,7 @@ const Home = () => {
             <span className='text-gray font-medium pb-6'>Naïman's Porfolio</span>
             <PageTitle color='text-black'>Hello, World! My name is Naïman a Software Developer</PageTitle>
           </div>
-          <div className='mt-52 relative flex justify-end pr-24'>
+          <div className='mt-20 relative flex justify-end pr-24'>
             <HorizontalBar className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full' color='bg-gray' />
             <div className='bg-primary p-14 rounded-full w-40 h-40 z-50'>
               <Globe />
@@ -52,7 +55,20 @@ const Home = () => {
         <div className='mt-32'>
           <h4 className='uppercase text-sm pb-2'>Selected Works</h4>
           <HorizontalBar color='bg-gray' />
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere quia velit sit officia soluta, fugit natus voluptatem quas dolor placeat nobis nihil in qui consectetur voluptatibus delectus. Ea enim aliquam nulla harum! Quasi nam nostrum incidunt quas numquam, dolorem exercitationem nihil, nobis culpa ex esse accusantium quae quis molestias delectus, tempore enim saepe. Totam et id expedita, reprehenderit voluptatum earum rerum sint magni. Laboriosam voluptatibus, magnam deleniti asperiores alias voluptatem odit nulla eos adipisci saepe? Inventore perferendis voluptatem, iusto error porro numquam, doloribus quisquam quos fuga laborum amet beatae placeat accusamus voluptatibus veniam unde, quo incidunt? Maxime nam exercitationem optio.</p>
+          <div className='grid grid-cols-2 mt-6 gap-16'>
+            <WorkCard
+              href='/works/minecraft-clone'
+              img={minecraftBg}
+              title='Minecraft Clone'
+              description='A Minecraft Clone made with love.'
+            />
+            <WorkCard
+              href='/works/evyl'
+              img={evylBg}
+              title='Evyl'
+              description='A 2D Java Adventure game.'
+            />
+          </div>
         </div>
         <motion.div className='relative h-[80px]' style={{ height: circleHeight }}>
           <div className='absolute h-[1550%] w-[120%] left-[-10%] bg-primary ' style={{ borderRadius: '0 0 50% 50%' }}>
@@ -60,9 +76,15 @@ const Home = () => {
           </div>
         </motion.div>
       </section>
-      <section className='px-header h-screen py-8'>
+      <section className='px-header h-screen py-44'>
+        <span className='uppercase text-gray pb-6'>Contact me</span>
         <h2 className='text-7xl font-semibold'>Let's Work Together</h2>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem in mollitia praesentium enim sint harum officia et molestias consequuntur. Dicta reiciendis totam veritatis atque temporibus, vitae possimus laborum aliquid optio dolorem quasi, dolor aliquam architecto sed vel beatae qui quaerat sit consectetur. Minima illum nobis quibusdam, quisquam saepe voluptas tenetur illo, similique veritatis eligendi distinctio earum ipsa ea omnis nemo sed placeat consequuntur libero optio explicabo rem sit qui? Quos, iste! Illo quia, nesciunt veritatis quos mollitia similique! At quae tenetur illum dolor, quam dolore vel eveniet eaque laborum? Dolorem pariatur sit blanditiis laboriosam! Distinctio provident fuga culpa debitis nisi.</p>
+        <div className='max-w-36 py-4'>
+          <HorizontalBar color='bg-gray' />
+        </div>
+        <AnimatedParagraph>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus vero quas nisi officiis rem asperiores dolor blanditiis quae dolorem, ipsam neque. Eos excepturi repellendus nisi et, vel hic debitis adipisci.
+        </AnimatedParagraph>
       </section>
     </div>
   )
