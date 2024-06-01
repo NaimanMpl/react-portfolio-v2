@@ -28,6 +28,7 @@ const MagneticWrapper = ({ children, content }: MagneticWrapperProps) => {
       const { width, height, left, top } = magnetic.current.getBoundingClientRect();
       const x = clientX - (left + width / 2);
       const y = clientY - (top + height / 2);
+      
       moveXTo(x * 0.5);
       moveYTo(y * 0.5);
 

@@ -65,12 +65,14 @@ const Home = () => {
           <HorizontalBar color='bg-gray' />
           <div className='grid grid-cols-2 mt-6 gap-20 justify-between'>
             <WorkCard
+              key='Minecraft Clone'
               href='/works/minecraft-clone'
               img={minecraftBg}
               title='Minecraft Clone'
               description='A Minecraft Clone made with love.'
             />
             <WorkCard
+              key='Evyl'
               href='/works/evyl'
               img={evylBg}
               title='Evyl'

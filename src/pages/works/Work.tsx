@@ -40,9 +40,6 @@ const letterAnimation: Variants = {
 const Work = ({ title, description, background }: WorkProps) => {
 
   const location = useLocation();
-  const workData = location.state;
-
-  console.log(workData)
 
   return (
     <motion.div 
@@ -51,7 +48,7 @@ const Work = ({ title, description, background }: WorkProps) => {
       exit='exit' 
       className='bg-primary text-white overflow-hidden'
     >
-      <div className='relative h-screen flex flex-col justify-between'>
+      <motion.div className='relative h-screen flex flex-col justify-between'>
         <Header className='text-white' />
         <section className='px-header'>
           <div className='flex flex-col gap-6 items-center'>
@@ -79,18 +76,20 @@ const Work = ({ title, description, background }: WorkProps) => {
             </div>
           </div>
         </section>
-        <motion.div
-          initial={{ x: workData.x, y: `50px`, width: '60rem', height: '24rem' }}
-          animate={{ x: 0, y: 0, width: '100%', transition: { duration: 1.4, ease: transition, delay: .2 }}}
-        >
-          <motion.img 
-            initial={{ scale: 1.1 }} 
-            className='w-full object-cover h-[28rem]' 
-            src={background} 
-            alt={title} 
-          />
+        <motion.div className='px-header'>
+          <motion.div
+            initial={{ y: '-50%', width: '52rem', height: '24rem' }}
+            animate={{ x: 0, y: 0, width: '100%', transition: { duration: 1.4, ease: transition, delay: .2 }}}
+          >
+            <motion.img 
+              initial={{ scale: 1.1 }} 
+              className='w-full object-cover h-[24rem]' 
+              src={background}
+              alt={title}
+            />
+          </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
       
     </motion.div>
   )
