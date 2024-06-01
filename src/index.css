@@ -6,7 +6,9 @@
 @tailwind utilities;
 
 :root {
-    --white: #F4F4F4
+    --white: #F4F4F4;
+    --gray: #7A7A7A;
+    --primary: #21291B;
 }
 
 * {

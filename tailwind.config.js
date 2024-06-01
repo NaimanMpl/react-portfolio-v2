@@ -11,6 +11,7 @@ export default {
         "white" : "#F4F4F4",
         "black" : "#121212",
         'green-550' : "#34A847",
+        'light-green' : '#C8F5A7',
         gray: "#7A7A7A"
       },
       spacing: {

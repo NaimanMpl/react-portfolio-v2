@@ -16,8 +16,8 @@ const AnimatedParagraph = ({ children, className }: AnimatedParagraphProps) => {
       {
         children.split(' ').map((word, index) => {
           return (
-            <motion.span className='px-1 inline-flex overflow-hidden'>
-              <motion.span key={index} variants={slideUp} animate={isInView ? 'open' : 'closed'} custom={index}>
+            <motion.span key={index} className='px-1 inline-flex overflow-hidden'>
+              <motion.span variants={slideUp} animate={isInView ? 'open' : 'closed'} custom={index}>
                 {word}
               </motion.span>
             </motion.span>
