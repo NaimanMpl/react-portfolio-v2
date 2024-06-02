@@ -9,20 +9,28 @@ interface WorkImageProps {
 }
 
 const WorkImage = () => {
-  const { currentWork } = useWorkCardData();
+  const { currentWorkIndex } = useWorkCardData();
 
   return (
-    <motion.div
-      id='work-image'
-      className='opacity-0 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[24rem] h-[36rem] overflow-hidden'
-      transition={smoothEase}
-    >
-      <motion.img
-        src={getWorkBackground(currentWork)}
-        className='w-full h-full object-cover'
-        alt={currentWork}
-      />
-    </motion.div>
+    <>
+      <motion.div
+        id='work-image'
+        className='opacity-0 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[24rem] h-[36rem] overflow-hidden'
+      >
+        <motion.div animate={{ translateY: `-${(currentWorkIndex - 1) * 36}rem`, transition: {...smoothEase, duration: 1 }}}>
+          <motion.img
+            src={getWorkBackground('Minecraft Clone')}
+            className='w-[24rem] h-[36rem] object-cover'
+            alt={'currentWork'}
+          />
+          <motion.img
+            src={getWorkBackground('Evyl')}
+            className='w-[24rem] h-[36rem] object-cover'
+            alt='Evyl'
+          />
+        </motion.div>
+      </motion.div>
+    </>
 )
 }
 

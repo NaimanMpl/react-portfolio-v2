@@ -1,18 +1,18 @@
 import React, { Dispatch, ReactNode, SetStateAction, useContext, useState } from "react";
 
 interface WorkCardContextType {
-  currentWork: string,
-  setCurrentWork: Dispatch<SetStateAction<string>>
+  currentWorkIndex: number,
+  setCurrentWorkIndex: Dispatch<SetStateAction<number>>
 }
 
 const WorkCardContext = React.createContext<WorkCardContextType | undefined>(undefined);
 
 export const WorkCardDataProvider = ({ children }: { children: ReactNode}) => {
 
-  const [ currentWork, setCurrentWork ] = useState('Minecraft Clone');
+  const [ currentWorkIndex, setCurrentWorkIndex ] = useState(0);
 
   return (
-    <WorkCardContext.Provider value={{ currentWork, setCurrentWork }}>
+    <WorkCardContext.Provider value={{ currentWorkIndex, setCurrentWorkIndex }}>
       {children}
     </WorkCardContext.Provider>
   ) 

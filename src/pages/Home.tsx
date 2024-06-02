@@ -34,7 +34,7 @@ const Home = () => {
       ScrollTrigger.create({
         trigger: worksContainer.current,
         start: 'top+=300 bottom',
-        end: 'bottom bottom+=100',
+        end: 'bottom+=100 bottom',
         onEnterBack: () => {
           gsap.to('#work-image', { opacity: 1, duration: .4, ease: "power1.out" });
         },
@@ -48,7 +48,6 @@ const Home = () => {
           gsap.to('#work-image', { opacity: 0, duration: .4, ease: "power1.out" });
         }
       });
-  
     });
 
     return () => { context.revert() }

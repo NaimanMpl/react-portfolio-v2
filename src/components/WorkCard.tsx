@@ -32,7 +32,7 @@ const WorkCard = ({ index, href, title, description }: WorkCardProps) => {
   const background = useRef<HTMLImageElement>(null);
   const [ hovered, setHovered ] = useState(false);
   const container = useRef<HTMLDivElement>(null);
-  const { setCurrentWork } = useWorkCardData();
+  const { setCurrentWorkIndex } = useWorkCardData();
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -42,12 +42,11 @@ const WorkCard = ({ index, href, title, description }: WorkCardProps) => {
           trigger: container.current,
           start: 'top+=400 bottom',
           end: 'bottom+=200 top',
-          markers: true,
           onEnter: () => {
-            setCurrentWork(title)
+            setCurrentWorkIndex(index)
           },
           onEnterBack: () => {
-            setCurrentWork(title)
+            setCurrentWorkIndex(index)
           }
         }
       })
@@ -59,7 +58,7 @@ const WorkCard = ({ index, href, title, description }: WorkCardProps) => {
   return (
     <motion.div 
       ref={container}
-      className={`relative h-[90vh] border-solid py-44 border border-solid border-red-500 flex ${index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'} border-t-gray border-b-gray`} 
+      className={`relative h-[90vh] border-y border-solid py-44 flex ${index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'} border-t-gray border-b-gray`} 
       initial='initial' 
       animate='animate' 
       exit={ hovered ? { opacity: 1 } : { opacity: 0 }}
