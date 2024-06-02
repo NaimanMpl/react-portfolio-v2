@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { smoothEase } from '../anim';
 import evylBg from '../assets/evyl.png';
 import githubIcon from '../assets/github.svg';
 import linkedInIcon from '../assets/linkedin.svg';
@@ -61,20 +62,22 @@ const Home = () => {
           </div>
         </div>
         <div className='mt-32'>
-          <h4 className='uppercase text-sm pb-2'>Selected Works</h4>
-          <HorizontalBar color='bg-gray' />
-          <div className='grid grid-cols-2 mt-6 gap-20 justify-between'>
+          <motion.div exit={{ opacity: 0 }} transition={smoothEase}>
+            <h4 className='uppercase text-sm pb-2'>Selected Works</h4>
+            <HorizontalBar color='bg-gray' />
+          </motion.div>
+          <div className='flex flex-col'>
             <WorkCard
+              index={1}
               key='Minecraft Clone'
               href='/works/minecraft-clone'
-              img={minecraftBg}
               title='Minecraft Clone'
               description='A Minecraft Clone made with love.'
             />
             <WorkCard
+              index={2}
               key='Evyl'
-              href='/works/evyl'
-              img={evylBg}
+              href='/works/minecraft-clone'
               title='Evyl'
               description='A 2D Java Adventure game.'
             />

@@ -40,3 +40,8 @@ export const slideUpTitle: Variants = {
     y: '100%'
   }
 }
+
+export const smoothEase = {
+  duration: .6, 
+  ease: [.43, .13, 0.23, .96]
+}

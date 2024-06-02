@@ -1,11 +1,12 @@
-import { motion, Variants } from 'framer-motion';
+import { motion, useInView, Variants } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import arrowIcon from '../assets/arrow.svg';
+import { getWorkBackground } from '../utils';
 
 interface WorkCardProps {
+  index: number,
   href: string,
-  img: string,
   title: string,
   description: string
 }
@@ -25,10 +26,13 @@ const opacityExitFadeOut: Variants = {
   }
 }
 
-const WorkCard = ({ href, img, title, description }: WorkCardProps) => {
+const WorkCard = ({ index, href, title, description }: WorkCardProps) => {
 
   const background = useRef<HTMLImageElement>(null);
   const [ coordinates, setCoordinates ] = useState({ x: 0, y: 0 });
+  const [ hovered, setHovered ] = useState(false);
+  const container = useRef<HTMLDivElement>(null);
+  const isInView = useInView(container);
 
   useEffect(() => {
     
@@ -46,30 +50,44 @@ const WorkCard = ({ href, img, title, description }: WorkCardProps) => {
   }, []);
   
   return (
-    <motion.div className='w-[52rem]' initial='initial' animate='animate' exit='exit'>
-      <div className='overflow-hidden'>
-        <Link to={href} state={coordinates}>
+    <motion.div 
+      ref={container}
+      className={`relative  h-[90vh] border-solid py-12 flex ${index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'} border-t-gray border-b-gray`} 
+      initial='initial' 
+      animate='animate' 
+      exit={ hovered ? { opacity: 1 } : { opacity: 0 }}
+      transition={transition}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onMouseMove={() => setHovered(true)}
+    >
+      <motion.div 
+        className={`absolute ${index % 2 === 0 ? 'left-0' : 'right-0'} w-[24rem] h-[36rem] overflow-hidden`}
+        transition={transition}
+        exit={hovered ? { position: 'fixed', left: '50%', top: '50%', translateX: '-50%', translateY: '-50%', width: '24rem' } : {}}
+      >
+        <Link
+         to={href} 
+         state={coordinates}
+        >
           <motion.img
             ref={background}
             transition={transition}
-            className='w-[52rem] h-[24rem] object-cover' 
-            src={img}
-            alt={title} 
+            className='w-full h-full object-cover' 
+            src={getWorkBackground(title)}
+            alt={title}
           />
         </Link>
-      </div>
-      <div className='flex justify-between items-center mt-4'>
-        <div className='flex items-center gap-4'>
-          <motion.p variants={opacityExitFadeOut} className='font-serif text-3xl'>{title}</motion.p>
-          <Link to={href} state={coordinates}>
-            <motion.div variants={opacityExitFadeOut} className='border border-solid border-white rounded-full p-2'>
-              <motion.img className='w-3' src={arrowIcon} alt='Go' />
-            </motion.div>
-          </Link>
-        </div>
-        <motion.p variants={opacityExitFadeOut} className='max-w-36'>{description}</motion.p>
-      </div>
-      <span>{coordinates.x} {coordinates.y}</span>
+      </motion.div>
+      <motion.div 
+        className={`relative flex flex-col gap-4 text-sm ${index % 2 === 0 ? 'items-start' : 'items-end'} justify-end w-1/2 h-full`}
+        exit={{ opacity: 0 }}
+        transition={transition}
+      >
+        <span className={`absolute top-0 ${index % 2 === 1 ? 'right-0' : 'left-0'} text-lg font-semibold`}>{index < 10 ? `0${index}` : index}.</span>
+        <motion.p variants={opacityExitFadeOut} className='font-serif text-6xl'>{title}</motion.p>
+        <motion.p variants={opacityExitFadeOut}>{description}</motion.p>
+      </motion.div>
     </motion.div>
   )
 }

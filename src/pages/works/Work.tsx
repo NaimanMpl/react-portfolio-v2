@@ -78,19 +78,18 @@ const Work = ({ title, description, background }: WorkProps) => {
         </section>
         <motion.div className='px-header'>
           <motion.div
-            initial={{ y: '-50%', width: '52rem', height: '24rem' }}
-            animate={{ x: 0, y: 0, width: '100%', transition: { duration: 1.4, ease: transition, delay: .2 }}}
+            className='overflow-hidden'
+            initial={{ position: 'fixed', left: '50%', top: '50%', translateX: '-50%', translateY: '-50%',  width: '24rem', height: '36rem' }}
+            animate={{ top: '100%', width: '100%', height: '36rem', transition: { duration: 1.4, ease: transition, delay: .2 }}}
           >
-            <motion.img 
-              initial={{ scale: 1.1 }} 
-              className='w-full object-cover h-[24rem]' 
+            <motion.img
+              className='w-full h-full object-cover'
               src={background}
               alt={title}
             />
           </motion.div>
         </motion.div>
       </motion.div>
-      
     </motion.div>
   )
 }
