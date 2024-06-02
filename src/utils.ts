@@ -1,7 +1,7 @@
 import clsx, { ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import evylBg from './assets/evyl.png';
-import minecraftBg from './assets/minecraft_bg.jpg';
+import minecraftBg from './assets/minecraftbg.jpg';
 import { WorkCardData, Works } from "./contexts/WorkCardContext";
 
 export function cn(...inputs: ClassValue[]) {
@@ -27,3 +27,6 @@ export const getWorkBackground = (title: string): string => {
       return minecraftBg;
   }
 }
+
+export { evylBg, minecraftBg };
+

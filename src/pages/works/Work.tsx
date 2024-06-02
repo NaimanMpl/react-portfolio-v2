@@ -1,4 +1,5 @@
 import { motion, Variants } from 'framer-motion'
+import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import Header from '../../components/Header'
 import { useWorkCardData } from '../../contexts/WorkCardContext'
@@ -40,6 +41,9 @@ const letterAnimation: Variants = {
 const Work = ({ title, description, background }: WorkProps) => {
 
   const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
 
   return (
     <motion.div 
@@ -79,7 +83,7 @@ const Work = ({ title, description, background }: WorkProps) => {
         <motion.div className='px-header'>
           <motion.div
             className='overflow-hidden'
-            initial={{ position: 'fixed', left: '50%', top: '50%', translateX: '-50%', translateY: '-50%',  width: '24rem', height: '36rem' }}
+            initial={{ position: 'absolute', left: '50%', top: '50%', translateX: '-50%', translateY: '-50%',  width: '24rem', height: '36rem' }}
             animate={{ top: '100%', width: '100%', height: '36rem', transition: { duration: 1.4, ease: transition, delay: .2 }}}
           >
             <motion.img
@@ -90,6 +94,10 @@ const Work = ({ title, description, background }: WorkProps) => {
           </motion.div>
         </motion.div>
       </motion.div>
+      <section className='px-header mt-96 flex justify-between'>
+        <h2 className='text-7xl font-semibold max-w-5xl'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos, incidunt.</h2>
+        <p className='text-xl'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit veniam quia enim esse dolor aspernatur soluta eius possimus, nam commodi!</p>
+      </section>
     </motion.div>
   )
 }

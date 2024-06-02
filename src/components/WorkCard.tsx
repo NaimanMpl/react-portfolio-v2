@@ -1,8 +1,9 @@
-import { motion, useInView, Variants } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import arrowIcon from '../assets/arrow.svg';
-import { getWorkBackground } from '../utils';
+import { useWorkCardData } from '../contexts/WorkCardContext';
 
 interface WorkCardProps {
   index: number,
@@ -29,30 +30,36 @@ const opacityExitFadeOut: Variants = {
 const WorkCard = ({ index, href, title, description }: WorkCardProps) => {
 
   const background = useRef<HTMLImageElement>(null);
-  const [ coordinates, setCoordinates ] = useState({ x: 0, y: 0 });
   const [ hovered, setHovered ] = useState(false);
   const container = useRef<HTMLDivElement>(null);
-  const isInView = useInView(container);
+  const { setCurrentWork } = useWorkCardData();
 
   useEffect(() => {
-    
-    const updateCoordinates = () => {
-      if (!background.current) return;
-  
-      const { left, top } = background.current.getBoundingClientRect();
-      setCoordinates({ x: left, y: top });
-    }
+    gsap.registerPlugin(ScrollTrigger);
+    const context = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: container.current,
+          start: 'top+=400 bottom',
+          end: 'bottom+=200 top',
+          markers: true,
+          onEnter: () => {
+            setCurrentWork(title)
+          },
+          onEnterBack: () => {
+            setCurrentWork(title)
+          }
+        }
+      })
+    });
 
-    window.addEventListener('scroll', updateCoordinates);
-
-    return () => window.removeEventListener('scroll', updateCoordinates);
-
+    return () => { context.revert() }
   }, []);
   
   return (
     <motion.div 
       ref={container}
-      className={`relative  h-[90vh] border-solid py-12 flex ${index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'} border-t-gray border-b-gray`} 
+      className={`relative h-[90vh] border-solid py-44 border border-solid border-red-500 flex ${index % 2 === 0 ? 'flex-row-reverse' : 'flex-row'} border-t-gray border-b-gray`} 
       initial='initial' 
       animate='animate' 
       exit={ hovered ? { opacity: 1 } : { opacity: 0 }}
@@ -63,29 +70,17 @@ const WorkCard = ({ index, href, title, description }: WorkCardProps) => {
     >
       <motion.div 
         className={`absolute ${index % 2 === 0 ? 'left-0' : 'right-0'} w-[24rem] h-[36rem] overflow-hidden`}
-        transition={transition}
-        exit={hovered ? { position: 'fixed', left: '50%', top: '50%', translateX: '-50%', translateY: '-50%', width: '24rem' } : {}}
       >
-        <Link
-         to={href} 
-         state={coordinates}
-        >
-          <motion.img
-            ref={background}
-            transition={transition}
-            className='w-full h-full object-cover' 
-            src={getWorkBackground(title)}
-            alt={title}
-          />
-        </Link>
+        
       </motion.div>
-      <motion.div 
+      <motion.div
         className={`relative flex flex-col gap-4 text-sm ${index % 2 === 0 ? 'items-start' : 'items-end'} justify-end w-1/2 h-full`}
         exit={{ opacity: 0 }}
         transition={transition}
       >
-        <span className={`absolute top-0 ${index % 2 === 1 ? 'right-0' : 'left-0'} text-lg font-semibold`}>{index < 10 ? `0${index}` : index}.</span>
-        <motion.p variants={opacityExitFadeOut} className='font-serif text-6xl'>{title}</motion.p>
+        <Link to={href}>
+          <motion.p variants={opacityExitFadeOut} className='font-serif text-6xl'>{title}</motion.p>
+        </Link>
         <motion.p variants={opacityExitFadeOut}>{description}</motion.p>
       </motion.div>
     </motion.div>

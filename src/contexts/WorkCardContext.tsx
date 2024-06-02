@@ -1,34 +1,27 @@
-import React, { ReactNode, useContext } from "react";
+import React, { Dispatch, ReactNode, SetStateAction, useContext, useState } from "react";
 
-export interface WorkCardData {
-  x: number,
-  y: number
+interface WorkCardContextType {
+  currentWork: string,
+  setCurrentWork: Dispatch<SetStateAction<string>>
 }
 
-export interface Works {
-  minecraftclone: WorkCardData
-  evyl: WorkCardData
-}
-
-const WorkCardContext = React.createContext<Works>({
-  minecraftclone: {
-    x: 0,
-    y: 0
-  },
-  evyl: {
-    x: 0,
-    y: 0
-  }
-});
+const WorkCardContext = React.createContext<WorkCardContextType | undefined>(undefined);
 
 export const WorkCardDataProvider = ({ children }: { children: ReactNode}) => {
+
+  const [ currentWork, setCurrentWork ] = useState('Minecraft Clone');
+
   return (
-    <WorkCardContext.Provider value={{ minecraftclone: {x: 0, y: 0}, evyl: {x: 0, y: 0} }}>
+    <WorkCardContext.Provider value={{ currentWork, setCurrentWork }}>
       {children}
     </WorkCardContext.Provider>
   ) 
 }
 
-export const useWorkCardData = () => {
-  return useContext(WorkCardContext);
-}
+export const useWorkCardData = (): WorkCardContextType => {
+  const context = useContext(WorkCardContext);
+  if (context === undefined) {
+    throw new Error("useWorkCardData must be used within a WorkCardDataProvider");
+  }
+  return context;
+};

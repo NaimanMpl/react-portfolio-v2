@@ -1,14 +1,15 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { smoothEase } from '../anim';
-import evylBg from '../assets/evyl.png';
 import githubIcon from '../assets/github.svg';
 import linkedInIcon from '../assets/linkedin.svg';
-import minecraftBg from '../assets/minecraft_bg.jpg';
 import Header from '../components/Header';
 import HorizontalBar from '../components/HorizontalBar';
 import WorkCard from '../components/WorkCard';
+import WorkImage from '../components/WorkImage';
 import AnimatedParagraph from '../ui/AnimatedParagraph';
 import AnimatedTitle from '../ui/AnimatedTitle';
 import Globe from '../ui/Globe';
@@ -17,17 +18,44 @@ import PageTitle from '../ui/PageTitle';
 
 const Home = () => {
 
+  const container = useRef(null);
   const worksContainer = useRef(null);
   const { scrollYProgress } = useScroll({
-    target: worksContainer,
+    target: container,
     offset: ["start end", "end start"]
   });
   const circleHeight = useTransform(scrollYProgress, [0, 0.8], [80, 0]);
   const globeRef = useRef<HTMLDivElement>(null);
   const mailRef = useRef<HTMLSpanElement>(null);
 
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const context = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: worksContainer.current,
+        start: 'top+=300 bottom',
+        end: 'bottom bottom+=100',
+        onEnterBack: () => {
+          gsap.to('#work-image', { opacity: 1, duration: .4, ease: "power1.out" });
+        },
+        onEnter: () => {
+          gsap.to('#work-image', { opacity: 1, duration: .4, ease: "power1.out" });
+        },
+        onLeave: () => {
+          gsap.to('#work-image', { opacity: 0, duration: .4, ease: "power1.out" });
+        },
+        onLeaveBack: () => {
+          gsap.to('#work-image', { opacity: 0, duration: .4, ease: "power1.out" });
+        }
+      });
+  
+    });
+
+    return () => { context.revert() }
+  }, []);
+
   return (
-    <div ref={worksContainer} className='overflow-hidden'>
+    <div ref={container} className='overflow-hidden'>
       <div className="relative h-screen">
         <Header />
         <section className='px-header'>
@@ -61,7 +89,8 @@ const Home = () => {
             <AnimatedTitle className='text-9xl'>amet consectetur</AnimatedTitle>
           </div>
         </div>
-        <div className='mt-32'>
+        <div ref={worksContainer} className='mt-32'>
+          <WorkImage />
           <motion.div exit={{ opacity: 0 }} transition={smoothEase}>
             <h4 className='uppercase text-sm pb-2'>Selected Works</h4>
             <HorizontalBar color='bg-gray' />

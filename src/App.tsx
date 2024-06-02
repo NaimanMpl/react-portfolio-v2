@@ -15,14 +15,14 @@ function App() {
   }, []);
 
   return (
-    <>
+    <WorkCardDataProvider>
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-            <Route index element={<Home />} />
-            <Route path="/works/minecraft-clone" element={<MinecraftCloneWork />} />
+          <Route index element={<Home />} />
+          <Route path="/works/minecraft-clone" element={<MinecraftCloneWork />} />
         </Routes>
       </AnimatePresence>
-    </>
+    </WorkCardDataProvider>
   )
 }
 
