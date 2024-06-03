@@ -10,6 +10,7 @@ import Header from '../components/Header';
 import HorizontalBar from '../components/HorizontalBar';
 import WorkCard from '../components/WorkCard';
 import WorkImage from '../components/WorkImage';
+import projects from '../projects';
 import AnimatedParagraph from '../ui/AnimatedParagraph';
 import AnimatedTitle from '../ui/AnimatedTitle';
 import Globe from '../ui/Globe';
@@ -34,7 +35,7 @@ const Home = () => {
       ScrollTrigger.create({
         trigger: worksContainer.current,
         start: 'top+=300 bottom',
-        end: 'bottom+=100 bottom',
+        end: 'bottom+=200 bottom',
         onEnterBack: () => {
           gsap.to('#work-image', { scale: 1 });
           gsap.to('#work-image', { opacity: 1, duration: .4, ease: "power1.out" });
@@ -102,24 +103,21 @@ const Home = () => {
             <HorizontalBar color='bg-gray' />
           </motion.div>
           <div className='flex flex-col'>
-            <WorkCard
-              index={1}
-              key='Minecraft Clone'
-              href='/works/minecraft-clone'
-              title='Minecraft Clone'
-              description='A Minecraft Clone made with love.'
-            />
-            <WorkCard
-              index={2}
-              key='Evyl'
-              href='/works/minecraft-clone'
-              title='Evyl'
-              description='A 2D Java Adventure game.'
-            />
+            {projects.map((project, index) => {
+              return (
+                <WorkCard
+                  index={index + 1}
+                  key={project.name}
+                  href={project.path}
+                  title={project.name}
+                  description={project.description}
+                />
+              )
+            })}
           </div>
         </motion.div>
-        <motion.div className='relative h-[80px] z-10' style={{ height: circleHeight }}>
-          <div className='absolute h-[1550%] w-[120%] left-[-10%] bg-primary ' style={{ borderRadius: '0 0 50% 50%' }}>
+        <motion.div className='relative h-[200px] -z-[1]' style={{ height: circleHeight }}>
+          <div className='absolute h-[2050%] w-[120%] left-[-10%] bg-primary ' style={{ borderRadius: '0 0 50% 50%' }}>
           
           </div>
         </motion.div>

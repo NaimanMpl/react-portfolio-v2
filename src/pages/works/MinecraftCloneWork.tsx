@@ -1,10 +1,25 @@
-import React from 'react'
-import { getWorkBackground } from '../../utils'
-import Work from './Work'
+import { motion } from 'framer-motion';
+import { getProject } from '../../projects';
+import Work from './Work';
 
 const MinecraftCloneWork = () => {
+  const work = getProject('Minecraft Clone');
+
   return (
-    <Work title='Minecraft Clone' description='A Minecraft Clone made with love' background={getWorkBackground('Minecraft Clone')} />
+    <Work 
+      title={work!.name} 
+      description='A Minecraft Clone made with love' 
+      background={work!.background}
+    >
+      <motion.section 
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 1, transition: { delay: .2 }}} 
+        className='px-header py-12 mt-44 gap-20 flex justify-between'
+      >
+        <h2 id='work-subtitle' className='text-4xl font-medium max-w-5xl'>Let's go to a place where everything is made of <span className='text-green-550'>blocks</span></h2>
+        <p id='work-description' className='text-lg'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit veniam quia enim esse dolor aspernatur soluta eius possimus, nam commodi!</p>
+      </motion.section>
+    </Work>
   )
 }
 
