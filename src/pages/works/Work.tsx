@@ -1,4 +1,4 @@
-import { motion, Variants } from 'framer-motion'
+import { motion, useScroll, useTransform, Variants } from 'framer-motion'
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import Header from '../../components/Header'
@@ -40,7 +40,9 @@ const letterAnimation: Variants = {
 
 const Work = ({ title, description, background }: WorkProps) => {
 
-  const location = useLocation();
+  const { scrollYProgress } = useScroll();
+  const scale = useTransform(scrollYProgress, [0, 1], [ 1, 1.15]);
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, []);
@@ -52,9 +54,9 @@ const Work = ({ title, description, background }: WorkProps) => {
       exit='exit' 
       className='bg-primary text-white overflow-hidden'
     >
-      <motion.div className='relative h-screen flex flex-col justify-between'>
+      <motion.div className='relative h-screen flex flex-col'>
         <Header className='text-white' />
-        <section className='px-header'>
+        <section className='px-header mt-40'>
           <div className='flex flex-col gap-6 items-center'>
             <Annotation color='text-light-green'>
               Project
@@ -68,7 +70,7 @@ const Work = ({ title, description, background }: WorkProps) => {
                         <motion.span
                           key={index} 
                           variants={letterAnimation}
-                          className='inline-block text-9xl font-serif text-white'
+                          className='inline-block text-8xl font-serif text-white'
                         >
                           {letter}
                         </motion.span>
@@ -87,6 +89,7 @@ const Work = ({ title, description, background }: WorkProps) => {
             animate={{ top: '100%', width: '100%', height: '36rem', transition: { duration: 1.4, ease: transition, delay: .2 }}}
           >
             <motion.img
+              style={{ scale: scale }}
               className='w-full h-full object-cover'
               src={background}
               alt={title}
@@ -94,10 +97,10 @@ const Work = ({ title, description, background }: WorkProps) => {
           </motion.div>
         </motion.div>
       </motion.div>
-      <section className='px-header mt-96 flex justify-between'>
-        <h2 className='text-7xl font-semibold max-w-5xl'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos, incidunt.</h2>
-        <p className='text-xl'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit veniam quia enim esse dolor aspernatur soluta eius possimus, nam commodi!</p>
-      </section>
+      <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: .2 }}} className='px-header mt-96 gap-24 flex justify-between'>
+        <h2 className='text-5xl font-semibold max-w-5xl'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos, incidunt.</h2>
+        <p className='text-lg'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit veniam quia enim esse dolor aspernatur soluta eius possimus, nam commodi!</p>
+      </motion.section>
     </motion.div>
   )
 }

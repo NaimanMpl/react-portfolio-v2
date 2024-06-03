@@ -36,15 +36,19 @@ const Home = () => {
         start: 'top+=300 bottom',
         end: 'bottom+=100 bottom',
         onEnterBack: () => {
+          gsap.to('#work-image', { scale: 1 });
           gsap.to('#work-image', { opacity: 1, duration: .4, ease: "power1.out" });
         },
         onEnter: () => {
+          gsap.to('#work-image', { scale: 1 });
           gsap.to('#work-image', { opacity: 1, duration: .4, ease: "power1.out" });
         },
         onLeave: () => {
+          gsap.to('#work-image', { scale: .6 });
           gsap.to('#work-image', { opacity: 0, duration: .4, ease: "power1.out" });
         },
         onLeaveBack: () => {
+          gsap.to('#work-image', { scale: .6 });
           gsap.to('#work-image', { opacity: 0, duration: .4, ease: "power1.out" });
         }
       });
@@ -76,19 +80,22 @@ const Home = () => {
       <section className='bg-primary pt-52 pb-24 px-header text-white'>
         <div className='flex flex-col gap-8'>
           <div className='flex justify-between items-center'>
-            <AnimatedTitle className='text-9xl'>Lorem ipsum asit</AnimatedTitle>
+            <AnimatedTitle className='text-[6vw]'>Lorem ipsum asit</AnimatedTitle>
             <div className='bg-pink-200 rounded-full px-24 py-8'>
-              <AnimatedTitle color='text-black text-9xl' serif>dolor sit</AnimatedTitle>
+              <AnimatedTitle color='text-black text-[6vw]' serif>dolor sit</AnimatedTitle>
             </div>
           </div>
           <div className='flex justify-between items-center'>
             <div className='bg-green-550 rounded-full px-24 py-8'>
-              <AnimatedTitle className='text-9xl' color='text-black' serif>dolor sit</AnimatedTitle>
+              <AnimatedTitle className='text-[6vw]' color='text-black' serif>dolor sit</AnimatedTitle>
             </div>
-            <AnimatedTitle className='text-9xl'>amet consectetur</AnimatedTitle>
+            <AnimatedTitle className='text-[6vw]'>amet consectetur</AnimatedTitle>
           </div>
         </div>
-        <div ref={worksContainer} className='mt-32'>
+        <motion.div 
+          ref={worksContainer} 
+          className='mt-32'
+        >
           <WorkImage />
           <motion.div exit={{ opacity: 0 }} transition={smoothEase}>
             <h4 className='uppercase text-sm pb-2'>Selected Works</h4>
@@ -110,7 +117,7 @@ const Home = () => {
               description='A 2D Java Adventure game.'
             />
           </div>
-        </div>
+        </motion.div>
         <motion.div className='relative h-[80px] z-10' style={{ height: circleHeight }}>
           <div className='absolute h-[1550%] w-[120%] left-[-10%] bg-primary ' style={{ borderRadius: '0 0 50% 50%' }}>
           

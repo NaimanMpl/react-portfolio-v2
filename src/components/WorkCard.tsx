@@ -33,27 +33,6 @@ const WorkCard = ({ index, href, title, description }: WorkCardProps) => {
   const [ hovered, setHovered ] = useState(false);
   const container = useRef<HTMLDivElement>(null);
   const { setCurrentWorkIndex } = useWorkCardData();
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const context = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: container.current,
-          start: 'top+=400 bottom',
-          end: 'bottom+=200 top',
-          onEnter: () => {
-            setCurrentWorkIndex(index)
-          },
-          onEnterBack: () => {
-            setCurrentWorkIndex(index)
-          }
-        }
-      })
-    });
-
-    return () => { context.revert() }
-  }, []);
   
   return (
     <motion.div 
@@ -63,9 +42,7 @@ const WorkCard = ({ index, href, title, description }: WorkCardProps) => {
       animate='animate' 
       exit={ hovered ? { opacity: 1 } : { opacity: 0 }}
       transition={transition}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onMouseMove={() => setHovered(true)}
+      onHoverStart={ () => { setCurrentWorkIndex(index) }}
     >
       <motion.div 
         className={`absolute ${index % 2 === 0 ? 'left-0' : 'right-0'} w-[24rem] h-[36rem] overflow-hidden`}
