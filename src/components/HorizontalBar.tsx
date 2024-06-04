@@ -5,7 +5,7 @@ interface HorizontalBarProps {
 
 const HorizontalBar = ({ color, className }: HorizontalBarProps) => {
   return (
-    <div className={`w-full h-px ${color} ${className} -z-[1]`}>
+    <div className={`w-full h-px ${color} ${className}`}>
 
     </div>
   )

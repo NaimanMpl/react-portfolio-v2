@@ -37,8 +37,6 @@ const Home = () => {
         trigger: worksContainer.current,
         start: 'top+=300 bottom',
         end: `bottom+=${window.innerWidth < 768 ? 350 : 200} bottom`,
-        invalidateOnRefresh: true,
-        markers: true,
         scrub: true,
         onEnterBack: () => {
           gsap.to('#work-image', { scale: 1 });
@@ -69,7 +67,7 @@ const Home = () => {
 
   return (
     <div ref={container} className='overflow-hidden'>
-      <div className="relative h-screen">
+      <div className="bg-white relative h-screen">
         <Header />
         <section className='px-header'>
           <div className='mt-52 flex flex-col items-center dxl:mt-16'>
@@ -131,7 +129,7 @@ const Home = () => {
           </div>
         </motion.div>
       </section>
-      <section className='relative px-header h-screen py-60 dxl:py-32'>
+      <section className='bg-white relative px-header h-screen py-60 dxl:py-32'>
         <div className='absolute right-0 top-0 flex gap-4 py-24 px-20 dxl:px-10 dxl:py-12'>
           <img src={linkedInIcon} alt='Linked In' />
           <Link to='https://github.com/NaimanMpl'>
