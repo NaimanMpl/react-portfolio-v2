@@ -57,7 +57,7 @@ const Work = ({ link, children, title, description, background }: WorkProps) => 
   const work = getProject(title);
   const container = useRef(null);
   const images = useRef<(HTMLImageElement | null)[]>([]);
-  const { setCursorVisible } = useCursor();
+  const { cursorVisible, setCursorVisible } = useCursor();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -92,7 +92,6 @@ const Work = ({ link, children, title, description, background }: WorkProps) => 
         exit='exit' 
         className='bg-primary text-white overflow-hidden'
       >
-        {link !== null && <CursorLink title='See Github' href={link} />}
         <motion.div className='relative h-screen flex flex-col'>
           <Header className='text-white' />
           <section className='px-header mt-44'>
@@ -141,7 +140,6 @@ const Work = ({ link, children, title, description, background }: WorkProps) => 
         {children}
         <div 
           ref={container}
-          className='border border-solid border-red-50'
           onMouseEnter={() => setCursorVisible(true) } 
           onMouseLeave={() => setCursorVisible(false) }
         >

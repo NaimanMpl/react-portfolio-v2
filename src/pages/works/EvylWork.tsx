@@ -8,7 +8,7 @@ const EvylWork = () => {
   const work = getProject('Evyl');
 
   return (
-    <>
+    <CursorProvider>
       <Work
         title={work!.name}
         background={work!.background}
@@ -24,7 +24,7 @@ const EvylWork = () => {
           <p className='text-lg'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit veniam quia enim esse dolor aspernatur soluta eius possimus, nam commodi!</p>
         </motion.section>
       </Work>
-    </>
+    </CursorProvider>
   )
 }
 

@@ -19,6 +19,12 @@ export default {
       },
       fontFamily: {
         'serif': ['Prata', 'serif']
+      },
+      screens: {
+        dxl: { max: '1279px' },
+        dlg: { max: '1023px' },
+        dmd: { max: '767px' },
+        dsm: { max: '639px' },
       }
     },
   },

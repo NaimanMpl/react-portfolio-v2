@@ -12,7 +12,7 @@ const AnimatedParagraph = ({ children, className }: AnimatedParagraphProps) => {
   const container = useRef(null);
   const isInView = useInView(container);
   return (
-    <motion.p ref={container} className={`m-0 max-w-5xl text-2xl ${className}`}>
+    <motion.p ref={container} className={`m-0 max-w-5xl text-2xl ${className} dxl:text-xl`}>
       {
         children.split(' ').map((word, index) => {
           return (

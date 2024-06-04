@@ -55,7 +55,7 @@ const WorkCard = ({ index, href, title, description }: WorkCardProps) => {
         transition={transition}
       >
         <Link to={href}>
-          <motion.p variants={opacityExitFadeOut} className='font-serif text-6xl'>{title}</motion.p>
+          <motion.p variants={opacityExitFadeOut} className='font-serif text-6xl dxl:text-4xl'>{title}</motion.p>
         </Link>
         <motion.p variants={opacityExitFadeOut}>{description}</motion.p>
       </motion.div>

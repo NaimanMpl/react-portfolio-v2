@@ -18,7 +18,7 @@ const AnimatedTitle = ({ children, color, serif = false, className }: AnimatedTi
       {children.split(' ').map((word, index) => 
         <span
           key={index} 
-          className={`inline-flex pr-4 py-2 overflow-hidden ${color} ${className}`}
+          className={`inline-flex ${index === children.split(' ').length - 1 ? '' : 'pr-4'} py-2 overflow-hidden ${color} ${className}`}
         >
           <motion.span 
             variants={slideUpTitle} 
