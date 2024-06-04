@@ -31,12 +31,15 @@ const Home = () => {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    const context = gsap.context(() => {
+
+    const createScrollTrigger = () => {
       ScrollTrigger.create({
         trigger: worksContainer.current,
         start: 'top+=300 bottom',
-        end: 'bottom+=200 bottom',
+        end: `bottom+=${window.innerWidth < 768 ? 350 : 200} bottom`,
+        invalidateOnRefresh: true,
         markers: true,
+        scrub: true,
         onEnterBack: () => {
           gsap.to('#work-image', { scale: 1 });
           gsap.to('#work-image', { opacity: 1, duration: .4, ease: "power1.out" });
@@ -54,9 +57,14 @@ const Home = () => {
           gsap.to('#work-image', { opacity: 0, duration: .4, ease: "power1.out" });
         }
       });
+    }
+
+    const context = gsap.context(() => {
+      createScrollTrigger();
     });
 
-    return () => { context.revert() }
+
+    return () => { context.revert(); }
   }, []);
 
   return (
@@ -64,11 +72,11 @@ const Home = () => {
       <div className="relative h-screen">
         <Header />
         <section className='px-header'>
-          <div className='mt-52 flex flex-col items-center dxl:mt-44'>
+          <div className='mt-52 flex flex-col items-center dxl:mt-16'>
             <span className='text-gray font-medium pb-6 dxl:pb-2'>Naïman's Porfolio</span>
             <PageTitle color='text-black'>Hello, World! My name is Naïman a Software Developer</PageTitle>
           </div>
-          <div className='mt-32 relative flex justify-end pr-24 dxl:pr-4 dxl:mt-52'>
+          <div className='mt-32 relative flex justify-end pr-24 dxl:pr-4 dxl:mt-40'>
             <HorizontalBar className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full' color='bg-gray' />
             <MagneticWrapper content={globeRef}>
               <div className='bg-primary p-14 rounded-full w-40 h-40 z-50 dxl:w-28 dxl:h-28 dxl:p-8'>

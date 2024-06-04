@@ -2,18 +2,13 @@ import { motion, useScroll, useTransform, Variants } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ReactNode, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import CursorLink from '../../components/CursorLink'
+import { smoothEase } from '../../anim'
+import minecraftBg from '../../assets/minecraftclonebg.png'
 import Header from '../../components/Header'
-import Marquee from '../../components/marquee/Marquee'
-import MarqueeItem from '../../components/marquee/MarqueeItem'
 import WorkImageContainer from '../../components/work/WorkImageContainer'
 import { CursorProvider, useCursor } from '../../contexts/CursorContext'
-import { useWorkCardData } from '../../contexts/WorkCardContext'
 import { getProject } from '../../projects'
-import AnimatedTitle from '../../ui/AnimatedTitle'
 import Annotation from '../../ui/Annotation'
-import Button from '../../ui/Button'
-import MagneticWrapper from '../../ui/MagneticWrapper'
 
 interface WorkProps {
   children: ReactNode,
@@ -93,22 +88,26 @@ const Work = ({ link, children, title, description, background }: WorkProps) => 
         className='bg-primary text-white overflow-hidden'
       >
         <motion.div className='relative h-screen flex flex-col'>
-          <Header className='text-white' />
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: {...smoothEase, duration: 1 }}}>
+            <Header className='text-white' />
+          </motion.div>
           <section className='px-header mt-44'>
             <div className='flex flex-col gap-6 items-center'>
-              <Annotation color='text-light-green'>
-                Project
-              </Annotation>
-              <div className='flex gap-8 justify-center items-center'>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: {...smoothEase, duration: 1}}}>
+                <Annotation color='text-light-green'>
+                  Project
+                </Annotation>
+              </motion.div>
+              <div className='flex gap-8 justify-center items-center dxl:gap-2'>
                 {title.split(' ').map((word) => {
                   return (
-                    <motion.h2 variants={titleAnimation} className='pb-4 overflow-hidden'>
+                    <motion.h2 key={`title-${word}`} variants={titleAnimation} className='pb-4 overflow-hidden'>
                       {word.split('').map((letter, index) => {
                         return (
                           <motion.span
                             key={index} 
                             variants={letterAnimation}
-                            className='inline-block text-8xl font-serif text-white'
+                            className='inline-block text-8xl font-serif text-white dxl:text-[9vw]'
                           >
                             {letter}
                           </motion.span>
@@ -124,9 +123,20 @@ const Work = ({ link, children, title, description, background }: WorkProps) => 
             className='px-header' 
           >
             <motion.div
-              className='overflow-hidden'
-              initial={{ position: 'absolute', left: '50%', top: '50%', translateX: '-50%', translateY: '-50%',  width: '24rem', height: '36rem' }}
-              animate={{ top: '90%', width: '100%', height: '30rem', transition: { duration: 1.4, ease: transition, delay: .2 }}}
+              className={`overflow-hidden ${window.innerWidth < 768 ? 'w-[18rem]' : 'w-[24rem]'} ${window.innerWidth < 768 ? 'h-[30rem]' : 'h-[36rem]'}`}
+              initial={{ 
+                position: 'absolute', 
+                left: '50%', 
+                top: '50%', 
+                translateX: '-50%', 
+                translateY: '-50%',
+              }}
+              animate={{ 
+                top: window.innerWidth < 768 ? '75%' : '90%', 
+                width: '100%', 
+                height: window.innerWidth < 768 ? '20rem' : '30rem', 
+                transition: { duration: 1.4, ease: transition, delay: .2 }
+              }}
             >
               <motion.img
                 style={{ scale: scale }}
@@ -137,25 +147,30 @@ const Work = ({ link, children, title, description, background }: WorkProps) => 
             </motion.div>
           </motion.div>
         </motion.div>
-        {children}
-        <div 
-          ref={container}
-          onMouseEnter={() => setCursorVisible(true) } 
-          onMouseLeave={() => setCursorVisible(false) }
+        <motion.div 
+          initial={{ opacity: 0 }} 
+          animate={{ opacity: 1, transition: {...smoothEase}}}
         >
-          <WorkImageContainer>
-            {work!.images.map((image, index) => {
-              switch (index) {
-                case 0:
-                  return <img ref={ref => images.current[index] = ref} className='absolute left-1/2 top-[30%] -translate-x-1/2 -translate-y-1/2 w-[44rem] h-[28rem] object-cover z-20' src={image} alt={'image'} />
-                case 1:
-                  return <img ref={ref => images.current[index] = ref} className='absolute left-3/4 top-[60%] -translate-x-1/2 -translate-y-1/2 w-[36rem] h-[24rem] object-cover z-10' src={image} alt={'image'} />
-                case 2:
-                  return <img ref={ref => images.current[index] = ref} className='absolute left-[35%] top-[70%] -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[18rem] object-cover' src={image} alt={'image'} />
-              }
-            })}
-          </WorkImageContainer>
-        </div>
+          {children}
+          <div 
+            ref={container}
+            onMouseEnter={() => setCursorVisible(true) } 
+            onMouseLeave={() => setCursorVisible(false) }
+          >
+            <WorkImageContainer>
+              {work!.images.map((image, index) => {
+                switch (index) {
+                  case 0:
+                    return <img key={`work-img-${index}`} ref={ref => images.current[index] = ref} className='absolute left-1/2 top-[30%] -translate-x-1/2 -translate-y-1/2 w-[44rem] h-[28rem] object-cover z-20 dxl:w-[20rem] dxl:h-[16rem]' src={image} alt={title} />
+                  case 1:
+                    return <img key={`work-img-${index}`} ref={ref => images.current[index] = ref} className='absolute left-3/4 top-[60%] -translate-x-1/2 -translate-y-1/2 w-[36rem] h-[24rem] object-cover z-10 dxl:w-[18rem] dxl:h-[12rem]' src={image} alt={title} />
+                  case 2:
+                    return <img key={`work-img-${index}`} ref={ref => images.current[index] = ref} className='absolute left-[35%] top-[70%] -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[18rem] object-cover' src={image} alt={title} />
+                }
+              })}
+            </WorkImageContainer>
+          </div>
+        </motion.div>
       </motion.div>
     </>
   )

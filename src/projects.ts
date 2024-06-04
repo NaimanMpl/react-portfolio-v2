@@ -38,4 +38,8 @@ export const getProject = (name: string) => {
   return projects.find((project) => project.name === name);
 }
 
+export const getProjectByIndex = (index: number) => {
+  return projects[index];
+}
+
 export default projects;
