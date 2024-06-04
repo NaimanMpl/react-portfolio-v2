@@ -1,35 +1,51 @@
-import React, { ReactNode } from 'react'
-import { Variants, animate, motion } from 'framer-motion'
+import { Variants, animate, motion, useScroll, useTransform } from 'framer-motion';
+import React, { ReactNode } from 'react';
 
 interface MarqueeProps {
+  direction: 'left' | 'right',
   children: ReactNode
 }
 
-const translateVariants: Variants = {
-  animate: {
-    x: [0, -1035],
-    transition: {
-      x: {
-        repeat: Infinity,
-        repeatType: 'loop',
-        duration: 5,
-        ease: 'linear'
-      }
-    }
-  }
+const Marquee = ({ direction, children }: MarqueeProps) => {
+
+  return (
+    <div className='flex gap-5 overflow-hidden whitespace-nowrap'>
+      <MarqueeContainer direction={direction}>
+        {children}
+      </MarqueeContainer>
+      <MarqueeContainer direction={direction}>
+        {children}
+      </MarqueeContainer>
+    </div>
+  )
 }
 
-const Marquee = ({ children }: MarqueeProps) => {
+const MarqueeContainer = ({ children, direction }: { children: ReactNode, direction: string }) => {
+
+  const { scrollYProgress } = useScroll();
+  const duration = useTransform(scrollYProgress, [0, 1], [30, 10]);
+
   return (
-    <div className='relative w-screen max-w-full h-[206px] select-none overflow-x-hidden'>
-      <motion.div
-        className='absolute flex gap-4 flex-shrink-0 min-w-full'
-        variants={translateVariants}
+    <motion.div 
+        animate='animate' 
+        variants={{
+          animate: {
+            x: direction === 'left' ? [0, '-100%'] : ['-100%', 0],
+            transition: {
+              x: {
+                repeat: Infinity,
+                repeatType: 'loop',
+                duration: 30,
+                ease: 'linear'
+              }
+            }
+          }
+        }} 
+        className='inline-block'
       >
         {children}
       </motion.div>
-    </div>
-  )
+  );
 }
 
 export default Marquee

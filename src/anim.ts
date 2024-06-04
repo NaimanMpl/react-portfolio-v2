@@ -34,10 +34,10 @@ export const slideUpTitle: Variants = {
   },
   open: (i) => ({
     y: 0,
-    transition: { duration: 0.65, delay: 0.065 * i }
+    transition: { duration: 0.85, delay: 0.045 * i, ease: [.43, .13, 0.23, .96] }
   }),
   closed: {
-    y: '100%'
+    y: '200%'
   }
 }
 

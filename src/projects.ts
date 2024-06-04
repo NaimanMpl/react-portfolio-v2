@@ -1,4 +1,6 @@
-import evylBg from './assets/evyl.png';
+import evylImg2 from './assets/evyl-2.png';
+import evylImg3 from './assets/evyl-3.png';
+import { default as evylBg, default as evylImg1 } from './assets/evyl.png';
 import minecraftImg1 from './assets/minecraftclone-1.webp';
 import minecraftImg2 from './assets/minecraftclone-2.png';
 import minecraftImg3 from './assets/minecraftclone-3.jpeg';
@@ -9,6 +11,7 @@ interface Project {
   description: string,
   path: string,
   background: string,
+  link: string | null,
   images: string[]
 }
 
@@ -18,14 +21,16 @@ const projects: Project[] = [
     description: 'A Minecraft Clone made with love',
     path: '/works/minecraft-clone',
     background: minecraftBg,
-    images: [ minecraftImg1, minecraftImg2, minecraftImg3 ]
+    images: [ minecraftImg1, minecraftImg2, minecraftImg3 ],
+    link: 'https://github.com/NaimanMpl/Minecraft_Clone'
   },
   {
     name: 'Evyl',
     path: '/works/evyl',
     description: 'A 2D Java Adventure game',
     background: evylBg,
-    images: []
+    images: [evylImg1, evylImg2, evylImg3],
+    link: null,
   }
 ]
 

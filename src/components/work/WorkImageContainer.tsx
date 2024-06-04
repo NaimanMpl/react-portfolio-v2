@@ -6,7 +6,7 @@ interface WorkImageContainerProps {
 
 const WorkImageContainer = ({ children }: WorkImageContainerProps) => {
   return (
-    <div className='mt-32 relative h-[60vh] w-full'>
+    <div className='mt-40 relative h-[60vh] w-full'>
       {children}
     </div>
   )

@@ -6,7 +6,7 @@ interface MarqueeItemProps {
 
 const MarqueeItem = ({ text }: MarqueeItemProps) => {
   return (
-    <span className='text-[6vw] whitespace-nowrap'>
+    <span className='text-[6vw] mx-5'>
       {text}
     </span>
   )
