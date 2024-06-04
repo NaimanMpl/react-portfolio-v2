@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useWorkCardData } from '../contexts/WorkCardContext';
+import { useWorkCardData } from '../../contexts/WorkCardContext';
 
 interface WorkCardProps {
   index: number,

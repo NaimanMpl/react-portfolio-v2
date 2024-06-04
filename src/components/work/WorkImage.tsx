@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
-import { smoothEase } from '../anim'
-import { useWorkCardData } from '../contexts/WorkCardContext'
-import projects from '../projects'
+import { smoothEase } from '../../anim'
+import { useWorkCardData } from '../../contexts/WorkCardContext'
+import projects from '../../projects'
 
 const WorkImage = () => {
   const { currentWorkIndex } = useWorkCardData();

@@ -1,7 +1,7 @@
 import evylBg from './assets/evyl.png';
-import minecraftImg1 from './assets/minecraftclone-1.png';
+import minecraftImg1 from './assets/minecraftclone-1.webp';
 import minecraftImg2 from './assets/minecraftclone-2.png';
-import minecraftImg3 from './assets/minecraftclone-3.png';
+import minecraftImg3 from './assets/minecraftclone-3.jpeg';
 import minecraftBg from './assets/minecraftclonebg.png';
 
 interface Project {

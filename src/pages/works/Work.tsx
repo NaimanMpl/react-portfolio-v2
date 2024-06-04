@@ -3,10 +3,12 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ReactNode, useEffect, useLayoutEffect, useRef } from 'react'
 import Header from '../../components/Header'
-import WorkImageContainer from '../../components/WorkImageContainer'
+import WorkImageContainer from '../../components/work/WorkImageContainer'
 import { useWorkCardData } from '../../contexts/WorkCardContext'
 import { getProject } from '../../projects'
 import Annotation from '../../ui/Annotation'
+import Marquee from '../../components/marquee/Marquee'
+import MarqueeItem from '../../components/marquee/MarqueeItem'
 
 interface WorkProps {
   children: ReactNode,
@@ -140,6 +142,15 @@ const Work = ({ children, title, description, background }: WorkProps) => {
           })}
         </WorkImageContainer>
       </div>
+      <Marquee>
+        <MarqueeItem text={title} />
+        <MarqueeItem text={title} />
+        <MarqueeItem text={title} />
+        <MarqueeItem text={title} />
+        <MarqueeItem text={title} />
+        <MarqueeItem text={title} />
+        <MarqueeItem text={title} />
+      </Marquee>
     </motion.div>
   )
 }
