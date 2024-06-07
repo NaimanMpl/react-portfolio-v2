@@ -7,10 +7,10 @@ interface AnimatedTitleProps {
   color?: string,
   serif?: boolean,
   children: string,
-
+  weight?: 'semibold' | 'medium'
 }
 
-const AnimatedTitle = ({ children, color, serif = false, className }: AnimatedTitleProps) => {
+const AnimatedTitle = ({ children, color, serif = false, className, weight = 'semibold' }: AnimatedTitleProps) => {
   const container = useRef(null);
   const isInView = useInView(container);
   return (
@@ -24,7 +24,7 @@ const AnimatedTitle = ({ children, color, serif = false, className }: AnimatedTi
             variants={slideUpTitle} 
             animate={isInView ? 'open' : 'closed'} 
             custom={index}
-            className={`${serif ? '' : 'font-semibold'} ${serif ? 'font-serif' : ''} `}
+            className={`${serif ? '' : (weight === 'semibold' ? 'font-semibold' : 'font-medium')} ${serif ? 'font-serif' : ''} `}
           >
             {word}
           </motion.span>

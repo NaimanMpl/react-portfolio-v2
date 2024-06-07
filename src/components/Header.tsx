@@ -16,7 +16,7 @@ const Header = ({ className }: HeaderProps) => {
         <ul>
           <li>
             <MagneticWrapper>
-              <Link to='/about' className='text-md font-medium'>About</Link>
+              <Link to='/contact' className='text-md font-medium'>Contact</Link>
             </MagneticWrapper>
           </li>
         </ul>
