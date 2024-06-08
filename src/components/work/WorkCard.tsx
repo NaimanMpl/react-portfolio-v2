@@ -83,7 +83,7 @@ const WorkCard = ({ index, href, title, description }: WorkCardProps) => {
         transition={transition}
       >
         <Link to={href} className='flex items-center gap-4'>
-          <motion.p variants={opacityExitFadeOut} className='font-serif text-6xl dxl:text-4xl'>{title}</motion.p>
+          <motion.p whileHover={{ borderBottom: '1px solid #F4F4F4' }} variants={opacityExitFadeOut} className='font-serif text-6xl dxl:text-4xl'>{title}</motion.p>
           <div className='w-12 h-12 border-[2px] border-solid border-white rounded-full p-1 dxl:w-8 dxl:h-8'>
             <img className='w-full h-full' src={arrow} alt="Go" />
           </div>
