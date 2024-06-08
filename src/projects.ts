@@ -49,7 +49,7 @@ const projects: Project[] = [
     link: null,
     quote: {
       background: sonicBg1,
-      description: "A quote from my favorite Sonic game. Sonic is talking to Chip, a small amnesiac creature. Chip, intrigued by Sonic's altruism, asks him why he is helping him. Sonic, true to his kind and loyal character, simply responds that he doesn't need a reason to help a friend.",
+      description: "A quote from my favorite Sonic game. Sonic is talking to Chip, a small amnesiac creature. Chip, intrigued by Sonic's altruism, asked him why he is helping him. Sonic, true to his kind and loyal character, simply responds that he doesn't need a reason to help a friend.",
       game: 'Sonic Unleashed',
       quote: 'Do I need a reason to want to help out a friend?'
     }

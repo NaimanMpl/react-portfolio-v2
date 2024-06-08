@@ -7,10 +7,11 @@ interface AnimatedTitleProps {
   color?: string,
   serif?: boolean,
   children: string,
+  gap?: string | null,
   weight?: 'semibold' | 'medium'
 }
 
-const AnimatedTitle = ({ children, color, serif = false, className, weight = 'semibold' }: AnimatedTitleProps) => {
+const AnimatedTitle = ({ children, color, serif = false, className, weight = 'semibold', gap = null, }: AnimatedTitleProps) => {
   const container = useRef(null);
   const isInView = useInView(container);
   return (
@@ -18,7 +19,7 @@ const AnimatedTitle = ({ children, color, serif = false, className, weight = 'se
       {children.split(' ').map((word, index) => 
         <span
           key={index} 
-          className={`inline-flex ${index === children.split(' ').length - 1 ? '' : 'pr-4'} py-2 overflow-hidden ${color} ${className}`}
+          className={`inline-flex ${index === children.split(' ').length - 1 ? '' : gap == null ? 'pr-4' : gap} py-2 overflow-hidden ${color} ${className}`}
         >
           <motion.span 
             variants={slideUpTitle} 

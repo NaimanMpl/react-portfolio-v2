@@ -87,7 +87,7 @@ const Home = () => {
       <section className='bg-primary pt-52 pb-24 px-header text-white dxl:pt-28'>
         <div className='flex flex-col gap-8'>
           <div className='flex justify-between items-center'>
-            <AnimatedTitle className='text-[6vw] dxl:text-[5vw]'>Embark on a</AnimatedTitle>
+            <AnimatedTitle className='text-[6vw] dxl:text-[5vw]' gap='mr-24 dxl:mr-4'>Embark on a</AnimatedTitle>
             <div className='bg-pink-200 rounded-full px-24 py-8 dxl:px-8 dxl:py-1'>
               <AnimatedTitle color='text-black text-[6vw] dxl:text-[3.8vw]' serif>Journey</AnimatedTitle>
             </div>
@@ -96,7 +96,7 @@ const Home = () => {
             <div className='bg-green-550 rounded-full px-52 py-12 dxl:px-8 dxl:py-2'>
               <img src={arrowDown} className='dxl:max-w-5 dxl:max-h-5' alt="Scroll" />
             </div>
-            <AnimatedTitle className='text-[6vw] dxl:text-[5vw]'>Through My Projects</AnimatedTitle>
+            <AnimatedTitle className='text-[6vw] dxl:text-[5vw]' gap='mr-24 dxl:mr-4'>Through My Projects</AnimatedTitle>
           </div>
         </div>
         <motion.div 
@@ -139,7 +139,7 @@ const Home = () => {
         <SonicQuote
           theme='light'
           background={eggmanBg}
-          description="There are very few games that humanize Dr. Eggman, Sonic Frontiers chose to not be one of them and i kinda respect that. In many Sonic games Eggman has always be treaten as a vilain before a human. We finally see him concede to his true feelings."
+          description="There are very few games humanizing Dr. Eggman, Sonic Frontiers chose to not be one of them and it increased my respect and appreciation for Eggman in general. In many Sonic games Eggman has always be treaten as a vilain before a human. We finally see him showing his true feelings."
           game='Sonic Frontiers'
           author='Eggman'
           quote='Be careful... Dear Daugther'
