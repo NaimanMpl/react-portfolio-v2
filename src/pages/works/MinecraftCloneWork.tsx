@@ -24,8 +24,8 @@ const MinecraftCloneWork = () => {
           <WorkAnnotationTitle id='work-subtitle'>
             Let's go to a place where everything is made of <span className='text-green-550'>blocks</span>
           </WorkAnnotationTitle>
-          <WorkAnnotationParagraph id='work-description'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit veniam quia enim esse dolor aspernatur soluta eius possimus, nam commodi!
+          <WorkAnnotationParagraph id='work-description' className='max-w-2xl'>
+            One of the most striking aspects of the game is its visual aesthetics. What makes Minecraft valuable despite being a decade old is that it never ages. It doesn’t become an experience that our imagination embellishes over time but remains, for each player, a piece of our simpler past. This forces respect and has been a constant source of motivation to implement this clone.
           </WorkAnnotationParagraph>
         </WorkAnnotationContainer>
       </Work>

@@ -74,7 +74,7 @@ const Home = () => {
             <span className='text-gray font-medium pb-6 dxl:pb-2'>Naïman's Porfolio</span>
             <PageTitle color='text-black'>Hello, World! My name is Naïman a Software Developer</PageTitle>
           </div>
-          <div className='mt-32 relative flex justify-end pr-24 dxl:pr-4 dxl:mt-40'>
+          <div className='mt-28 relative flex justify-end pr-24 dxl:pr-4 dxl:mt-40'>
             <HorizontalBar className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full' color='bg-gray' />
             <MagneticWrapper content={globeRef}>
               <div className='bg-primary p-14 rounded-full w-40 h-40 z-50 dxl:w-28 dxl:h-28 dxl:p-8'>
@@ -131,7 +131,7 @@ const Home = () => {
       </section>
       <section className='px-header flex flex-col items-center bg-white py-12 gap-6'>
         <h2 className='font-medium text-5xl dxl:text-3xl'>Let's Work Together</h2>
-        <p className='text-center'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, quibusdam!</p>
+        <p className='text-center max-w-[70%] dxl:max-w-full'>Let's create something awesome together, whether you have a project idea or simply want to connect. Connect with me to discuss how we can make magic happen! I'm currently seeking an apprenticeship opportunity</p>
         <Link to='/contact' className='bg-black text-white px-6 py-3 rounded-lg'>
             Get in touch
         </Link>
