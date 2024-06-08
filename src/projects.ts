@@ -6,8 +6,7 @@ import minecraftImg2 from './assets/minecraftclone-2.png';
 import minecraftImg3 from './assets/minecraftclone-3.jpeg';
 import minecraftBg from './assets/minecraftclonebg.png';
 import sonicBg1 from './assets/sonic-bg-1.webp';
-import sonicBg2 from './assets/sonic-bg-2.jpg';
-import sonic2006bg from './assets/sonic-bg-2006.png';
+import sonic2006bg from './assets/sonic-bg-2006-2.webp';
 
 interface SonicQuote {
   background: string,
@@ -36,9 +35,9 @@ const projects: Project[] = [
     link: 'https://github.com/NaimanMpl/Minecraft_Clone',
     quote: {
       background: sonic2006bg,
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat.',
+      description: 'This quote is from the 2006 game Sonic the Hedgehog. Sonic says this to Princess Elise, encouraging her to take decisive action instead of being paralyzed by worry. By stating "nothing starts until you take action" and "if you have time to worry, then run," Sonic motivates her to be proactive and turn her concerns into forward momentum.',
       game: 'Sonic 2006',
-      quote: 'If you have time to worry, then you have time to run.'
+      quote: 'Nothing starts until you take action. If you have time to worry, then run.'
     }
   },
   {
@@ -50,7 +49,7 @@ const projects: Project[] = [
     link: null,
     quote: {
       background: sonicBg1,
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat.',
+      description: "A quote from my favorite Sonic game. Sonic is talking to Chip, a small amnesiac creature. Chip, intrigued by Sonic's altruism, asks him why he is helping him. Sonic, true to his kind and loyal character, simply responds that he doesn't need a reason to help a friend.",
       game: 'Sonic Unleashed',
       quote: 'Do I need a reason to want to help out a friend?'
     }

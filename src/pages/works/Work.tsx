@@ -1,15 +1,12 @@
 import { motion, useScroll, useTransform, Variants } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ReactNode, useEffect, useLayoutEffect, useRef } from 'react'
+import { ReactNode, useLayoutEffect, useRef } from 'react'
 import { smoothEase } from '../../anim'
 import Header from '../../components/Header'
 import WorkImageContainer from '../../components/work/WorkImageContainer'
-import { useCursor } from '../../contexts/CursorContext'
 import { getProject } from '../../projects'
 import Annotation from '../../ui/Annotation'
-import SonicQuote from '../../components/SonicQuote'
-import sonicBg from '../../assets/sonic-bg-1.webp'
 
 interface WorkProps {
   children: ReactNode,
@@ -54,9 +51,8 @@ const Work = ({ link, children, title, description, background, quote }: WorkPro
   const work = getProject(title);
   const container = useRef(null);
   const images = useRef<(HTMLImageElement | null)[]>([]);
-  const { cursorVisible, setCursorVisible } = useCursor();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
@@ -156,8 +152,6 @@ const Work = ({ link, children, title, description, background, quote }: WorkPro
           {children}
           <div 
             ref={container}
-            onMouseEnter={() => setCursorVisible(true) } 
-            onMouseLeave={() => setCursorVisible(false) }
           >
             <WorkImageContainer>
               {work!.images.map((image, index) => {

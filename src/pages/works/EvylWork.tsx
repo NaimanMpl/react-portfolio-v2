@@ -1,9 +1,10 @@
-import { motion } from 'framer-motion';
+import SonicQuote from '../../components/SonicQuote';
 import WorkAnnotationContainer from '../../components/work/WorkAnnotationContainer';
 import { CursorProvider } from '../../contexts/CursorContext';
 import { getProject } from '../../projects';
+import WorkAnnotationParagraph from '../../ui/WorkAnnotationParagraph';
+import WorkAnnotationTitle from '../../ui/WorkAnnotationTitle';
 import Work from './Work';
-import SonicQuote from '../../components/SonicQuote';
 
 const EvylWork = () => {
 
@@ -21,8 +22,12 @@ const EvylWork = () => {
         }
       >
         <WorkAnnotationContainer>
-          <h2 id='work-subtitle' className='text-4xl font-medium max-w-5xl'>Born to be the <span className='text-green-550'>Game Of The Year</span> forced to be in the Hall Of Fame</h2>
-          <p id='work-description' className='text-lg'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit veniam quia enim esse dolor aspernatur soluta eius possimus, nam commodi!</p>
+          <WorkAnnotationTitle id='work-subtitle'>
+            Born to be the <span className='text-green-550'>Game Of The Year</span> forced to be in the Hall Of Fame
+          </WorkAnnotationTitle>
+          <WorkAnnotationParagraph id='work-description'>
+            My first experience in writting a game engine in Java, who has been the reason of many sleepless night. This project is part of the Hall of Fame, a placed reserved to the most well done projects in my university.
+          </WorkAnnotationParagraph>
         </WorkAnnotationContainer>
       </Work>
     </CursorProvider>

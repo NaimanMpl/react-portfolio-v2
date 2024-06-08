@@ -4,19 +4,18 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { smoothEase } from '../anim';
-import githubIcon from '../assets/github.svg';
-import linkedInIcon from '../assets/linkedin.svg';
+import arrowDown from '../assets/arrowdown.svg';
+import eggmanBg from '../assets/sonic-frontiers-eggman.png';
 import Header from '../components/Header';
 import HorizontalBar from '../components/HorizontalBar';
+import SonicQuote from '../components/SonicQuote';
 import WorkCard from '../components/work/WorkCard';
 import WorkImage from '../components/work/WorkImage';
 import projects from '../projects';
-import AnimatedParagraph from '../ui/AnimatedParagraph';
 import AnimatedTitle from '../ui/AnimatedTitle';
 import Globe from '../ui/Globe';
 import MagneticWrapper from '../ui/MagneticWrapper';
 import PageTitle from '../ui/PageTitle';
-import arrowDown from '../assets/arrowdown.svg';
 
 const Home = () => {
 
@@ -40,20 +39,20 @@ const Home = () => {
         end: `bottom+=${window.innerWidth < 768 ? 350 : 200} bottom`,
         scrub: true,
         onEnterBack: () => {
-          gsap.to('#work-image', { scale: 1 });
+          gsap.to('#work-image', { scale: 1, display: 'block' });
           gsap.to('#work-image', { opacity: 1, duration: .4, ease: "power1.out" });
         },
         onEnter: () => {
-          gsap.to('#work-image', { scale: 1 });
+          gsap.to('#work-image', { scale: 1, display: 'block' });
           gsap.to('#work-image', { opacity: 1, duration: .4, ease: "power1.out" });
         },
         onLeave: () => {
           gsap.to('#work-image', { scale: .6 });
-          gsap.to('#work-image', { opacity: 0, duration: .4, ease: "power1.out" });
+          gsap.to('#work-image', { opacity: 0, duration: .4, ease: "power1.out", onComplete: () => { gsap.to('#work-image', { display: 'none' }) } });
         },
         onLeaveBack: () => {
           gsap.to('#work-image', { scale: .6 });
-          gsap.to('#work-image', { opacity: 0, duration: .4, ease: "power1.out" });
+          gsap.to('#work-image', { opacity: 0, duration: .4, ease: "power1.out", onComplete: () => { gsap.to('#work-image', { display: 'none' }) } });
         }
       });
     }
@@ -89,16 +88,16 @@ const Home = () => {
       <section className='bg-primary pt-52 pb-24 px-header text-white dxl:pt-28'>
         <div className='flex flex-col gap-8'>
           <div className='flex justify-between items-center'>
-            <AnimatedTitle className='text-[6vw] dxl:text-[4.8vw]'>Lorem ipsum asit</AnimatedTitle>
-            <div className='bg-pink-200 rounded-full px-24 py-8 dxl:px-5 dxl:py-2'>
-              <AnimatedTitle color='text-black text-[6vw] dxl:text-[4.8vw]' serif>dolor sit</AnimatedTitle>
+            <AnimatedTitle className='text-[6vw] dxl:text-[5vw]'>Embark on a</AnimatedTitle>
+            <div className='bg-pink-200 rounded-full px-24 py-8 dxl:px-8 dxl:py-1'>
+              <AnimatedTitle color='text-black text-[6vw] dxl:text-[3.8vw]' serif>Journey</AnimatedTitle>
             </div>
           </div>
           <div className='flex justify-between items-center'>
-            <div className='bg-green-550 rounded-full px-52 py-12 dxl:px-5 dxl:py-2'>
-              <img src={arrowDown} alt="Scroll" />
+            <div className='bg-green-550 rounded-full px-52 py-12 dxl:px-8 dxl:py-2'>
+              <img src={arrowDown} className='dxl:max-w-5 dxl:max-h-5' alt="Scroll" />
             </div>
-            <AnimatedTitle className='text-[6vw] dxl:text-[4.8vw]'>amet consectetur</AnimatedTitle>
+            <AnimatedTitle className='text-[6vw] dxl:text-[5vw]'>Through My Projects</AnimatedTitle>
           </div>
         </div>
         <motion.div 
@@ -130,32 +129,22 @@ const Home = () => {
           </div>
         </motion.div>
       </section>
-      <section className='bg-white relative px-header h-screen py-60 dxl:py-32'>
-        <div className='absolute right-0 top-0 flex gap-4 py-24 px-20 dxl:px-10 dxl:py-12'>
-          <img src={linkedInIcon} alt='Linked In' />
-          <Link to='https://github.com/NaimanMpl'>
-            <img src={githubIcon} alt='Github' />
-          </Link>
-        </div>
-        <div className='flex flex-col gap-1'>
-          <span className='uppercase text-gray'>Contact me</span>
-          <AnimatedTitle className='text-7xl font-semibold dxl:text-4xl'>
-            Let's Work Together
-          </AnimatedTitle>
-          <div className='max-w-36 py-4'>
-            <HorizontalBar color='bg-gray' />
-          </div>
-        </div>
-        <AnimatedParagraph
-          className='font-medium mt-4'
-        >
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus vero quas nisi officiis rem asperiores dolor blanditiis quae dolorem, ipsam neque. Eos excepturi repellendus nisi et, vel hic debitis adipisci.
-        </AnimatedParagraph>
-        <MagneticWrapper content={mailRef}>
-          <button className='border border-solid border-gray rounded-full px-16 py-5 font-semibold mt-8 text-xl dxl:text-lg dxl:px-12 dxl:py-4'>
-            <span ref={mailRef}>naimanmpl@gmail.com</span>
-          </button>
-        </MagneticWrapper>
+      <section className='px-header flex flex-col items-center bg-white py-12 gap-6'>
+        <h2 className='font-medium text-5xl dxl:text-3xl'>Let's Work Together</h2>
+        <p className='text-center'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, quibusdam!</p>
+        <Link to='/contact' className='bg-black text-white px-6 py-3 rounded-lg'>
+            Get in touch
+        </Link>
+      </section>
+      <section className='py-12 bg-white text-black'>
+        <SonicQuote
+          theme='light'
+          background={eggmanBg}
+          description="There are very few games that humanize Dr. Eggman, Sonic Frontiers chose to not be one of them and i kinda respect that. In many Sonic games Eggman has always be treaten as a vilain before a human. We finally see him concede to his true feelings."
+          game='Sonic Frontiers'
+          author='Eggman'
+          quote='Be careful... Dear Daugther'
+        />
       </section>
     </div>
   )

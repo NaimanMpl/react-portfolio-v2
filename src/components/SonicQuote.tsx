@@ -1,8 +1,11 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
-import React, { ReactNode, useRef } from 'react'
+import { useRef } from 'react'
+import WorkAnnotationParagraph from '../ui/WorkAnnotationParagraph'
+import WorkAnnotationTitle from '../ui/WorkAnnotationTitle'
 import WorkAnnotationContainer from './work/WorkAnnotationContainer'
 
 interface SonicQuoteProps {
+  theme?: 'dark' | 'light',
   background: string,
   quote: string,
   author?: string,
@@ -10,7 +13,7 @@ interface SonicQuoteProps {
   game: string
 }
 
-const SonicQuote = ({ background, quote, author = 'Sonic The Hedhehog', description, game }: SonicQuoteProps) => {
+const SonicQuote = ({ theme = 'dark', background, quote, author = 'Sonic The Hedhehog', description, game }: SonicQuoteProps) => {
   
   const container = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
@@ -28,12 +31,16 @@ const SonicQuote = ({ background, quote, author = 'Sonic The Hedhehog', descript
           />
         </div>
       </div>
-      <WorkAnnotationContainer className='mt-6 text-white'>
+      <WorkAnnotationContainer className={`mt-6 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
         <div className='flex flex-col gap-4'>
-          <h2 className='text-4xl font-medium max-w-5xl dxl:text-3xl'>{quote}</h2>
-          <span className='font-serif text-light-green text-base'>- {author}, {game}</span>
+          <WorkAnnotationTitle className='max-w-5xl'>
+            {quote}
+          </WorkAnnotationTitle>
+          <span className={`font-serif ${theme === 'dark' ? 'text-light-green' : 'text-gray'} text-base`}>- {author}, {game}</span>
         </div>
-        <p className='text-lg'>{description}</p>
+        <WorkAnnotationParagraph className='max-w-2xl'>
+          {description}
+        </WorkAnnotationParagraph>
       </WorkAnnotationContainer>
     </div>
   )
