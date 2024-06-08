@@ -1,5 +1,5 @@
-import { animate, motion, Variants } from 'framer-motion'
-import React, { EventHandler, MouseEventHandler, useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { smoothEase } from '../anim'
 import { useCursor } from '../contexts/CursorContext'
@@ -7,15 +7,6 @@ import { useCursor } from '../contexts/CursorContext'
 interface CursorLinkProps {
   href: string,
   title: string
-}
-
-const cursorVariants: Variants = {
-  animate: {
-    scale: 1.1
-  },
-  stop: {
-    scale: 0
-  }
 }
 
 const CursorLink = ({ href, title }: CursorLinkProps) => {

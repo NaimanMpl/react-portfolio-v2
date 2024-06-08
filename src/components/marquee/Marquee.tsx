@@ -1,5 +1,5 @@
-import { Variants, animate, motion, useScroll, useTransform } from 'framer-motion';
-import React, { ReactNode } from 'react';
+import { motion, useScroll } from 'framer-motion';
+import { ReactNode } from 'react';
 
 interface MarqueeProps {
   direction: 'left' | 'right',
@@ -23,7 +23,6 @@ const Marquee = ({ direction, children }: MarqueeProps) => {
 const MarqueeContainer = ({ children, direction }: { children: ReactNode, direction: string }) => {
 
   const { scrollYProgress } = useScroll();
-  const duration = useTransform(scrollYProgress, [0, 1], [30, 10]);
 
   return (
     <motion.div 

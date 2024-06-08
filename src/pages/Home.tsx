@@ -27,7 +27,6 @@ const Home = () => {
   });
   const circleHeight = useTransform(scrollYProgress, [0, 0.8], [80, 0]);
   const globeRef = useRef<HTMLDivElement>(null);
-  const mailRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);

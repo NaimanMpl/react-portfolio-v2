@@ -10,7 +10,7 @@ const Circle = () => {
   )
 }
 
-const Globe = React.forwardRef((props, ref: any) => {
+const Globe = React.forwardRef((ref: any) => {
   return (
     <div ref={ref} className='glob-wrap relative w-full h-full'>
       <div className="glob-container block w-full h-full overflow-hidden">

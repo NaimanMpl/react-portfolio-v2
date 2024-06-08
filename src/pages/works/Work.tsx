@@ -44,7 +44,7 @@ const letterAnimation: Variants = {
   }
 }
 
-const Work = ({ link, children, title, description, background, quote }: WorkProps) => {
+const Work = ({ children, title, background, quote }: WorkProps) => {
 
   const { scrollYProgress } = useScroll();
   const scale = useTransform(scrollYProgress, [0, 1], [ 1, 1.15]);

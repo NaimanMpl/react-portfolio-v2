@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { opacity, slideUp } from '../anim';
+import { slideUp } from '../anim';
 
 interface AnimatedParagraphProps {
   className?: string,

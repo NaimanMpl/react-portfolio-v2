@@ -29,7 +29,6 @@ const opacityExitFadeOut: Variants = {
 
 const WorkCard = ({ index, href, title, description }: WorkCardProps) => {
 
-  const background = useRef<HTMLImageElement>(null);
   const [ hovered, setHovered ] = useState(false);
   const container = useRef<HTMLDivElement>(null);
   const { setCurrentWorkIndex } = useWorkCardData();

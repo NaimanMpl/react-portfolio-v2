@@ -1,6 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import MagneticWrapper from '../ui/MagneticWrapper'
+import { Link } from 'react-router-dom';
+import MagneticWrapper from '../ui/MagneticWrapper';
 
 interface HeaderProps {
   className?: string

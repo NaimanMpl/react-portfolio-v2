@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { slideUp, slideUpTitle } from '../anim';
+import { slideUpTitle } from '../anim';
 
 interface AnimatedTitleProps {
   className?: string,

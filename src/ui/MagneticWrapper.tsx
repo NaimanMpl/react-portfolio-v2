@@ -38,7 +38,7 @@ const MagneticWrapper = ({ children, content }: MagneticWrapperProps) => {
       }
     });
 
-    magnetic.current.addEventListener('mouseleave', (e) => {
+    magnetic.current.addEventListener('mouseleave', () => {
       moveXTo(0);
       moveYTo(0);
 

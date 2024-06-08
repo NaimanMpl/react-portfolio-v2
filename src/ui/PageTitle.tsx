@@ -1,5 +1,3 @@
-import { color } from "framer-motion"
-
 interface PageTitleProps {
   color: string,
   children: string

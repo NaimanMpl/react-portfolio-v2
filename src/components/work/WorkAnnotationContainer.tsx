@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 interface WorkAnnotationContainerProps {
   children: ReactNode,

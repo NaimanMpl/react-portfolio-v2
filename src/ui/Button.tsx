@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { MouseEvent, MouseEventHandler, ReactNode, useEffect, useRef } from "react";
+import { MouseEventHandler, useEffect, useRef } from "react";
 import MagneticWrapper from "./MagneticWrapper";
 
 interface ButtonProps {
@@ -12,7 +12,6 @@ const Button = ({ children, backgroundColor = 'bg-black' }: ButtonProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const labelRef = useRef<HTMLSpanElement>(null);
   const circle = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLElement>(null);
   let timeline: gsap.core.Timeline | null = null;
   let timeoutId: number | null = null;
   useEffect(() => {
@@ -22,7 +21,7 @@ const Button = ({ children, backgroundColor = 'bg-black' }: ButtonProps) => {
       .to(circle.current, { top: '-150%', width: '125%', duration: 0.25 }, 'exit');
   }, []);
 
-  const handleMouseEnter: MouseEventHandler<HTMLButtonElement> = (e) => {
+  const handleMouseEnter: MouseEventHandler<HTMLButtonElement> = () => {
     if (timeoutId) {
       clearTimeout(timeoutId);
       timeoutId = null;
@@ -32,7 +31,7 @@ const Button = ({ children, backgroundColor = 'bg-black' }: ButtonProps) => {
     
   }
 
-  const handleMouseLeave: MouseEventHandler<HTMLButtonElement> = (e) => {
+  const handleMouseLeave: MouseEventHandler<HTMLButtonElement> = () => {
     timeoutId = setTimeout(() => {
       if (!timeline) return;
       timeline.play();
