@@ -3,18 +3,22 @@ import WorkAnnotationContainer from '../../components/work/WorkAnnotationContain
 import { CursorProvider } from '../../contexts/CursorContext';
 import { getProject } from '../../projects';
 import Work from './Work';
+import SonicQuote from '../../components/SonicQuote';
 
 const EvylWork = () => {
 
-  const work = getProject('Evyl');
+  const work = getProject('Evyl')!;
 
   return (
     <CursorProvider>
       <Work
-        title={work!.name}
-        background={work!.background}
+        title={work.name}
+        background={work.background}
         description=''
-        link={work!.link}
+        link={work.link}
+        quote={
+          <SonicQuote {...work.quote} />
+        }
       >
         <WorkAnnotationContainer>
           <h2 id='work-subtitle' className='text-4xl font-medium max-w-5xl'>Born to be the <span className='text-green-550'>Game Of The Year</span> forced to be in the Hall Of Fame</h2>

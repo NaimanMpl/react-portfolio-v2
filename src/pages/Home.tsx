@@ -16,6 +16,7 @@ import AnimatedTitle from '../ui/AnimatedTitle';
 import Globe from '../ui/Globe';
 import MagneticWrapper from '../ui/MagneticWrapper';
 import PageTitle from '../ui/PageTitle';
+import arrowDown from '../assets/arrowdown.svg';
 
 const Home = () => {
 
@@ -94,8 +95,8 @@ const Home = () => {
             </div>
           </div>
           <div className='flex justify-between items-center'>
-            <div className='bg-green-550 rounded-full px-24 py-8 dxl:px-5 dxl:py-2'>
-              <AnimatedTitle className='text-[6vw] dxl:text-[4.8vw]' color='text-black' serif>dolor sit</AnimatedTitle>
+            <div className='bg-green-550 rounded-full px-52 py-12 dxl:px-5 dxl:py-2'>
+              <img src={arrowDown} alt="Scroll" />
             </div>
             <AnimatedTitle className='text-[6vw] dxl:text-[4.8vw]'>amet consectetur</AnimatedTitle>
           </div>

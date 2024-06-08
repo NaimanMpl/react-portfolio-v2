@@ -18,18 +18,20 @@ const SonicQuote = ({ background, quote, author = 'Sonic The Hedhehog', descript
 
   return (
     <div ref={container}>
-      <div className='w-full overflow-hidden'>
-        <motion.img
-          style={{ scale: scale }}
-          className='w-full object-cover' 
-          src={background} 
-          alt={game} 
-        />
+      <div className="px-header">
+        <div className='w-full overflow-hidden'>
+          <motion.img
+            style={{ scale: scale }}
+            className='w-full max-h-[55vw] object-cover' 
+            src={background} 
+            alt={game} 
+          />
+        </div>
       </div>
-      <WorkAnnotationContainer className='mt-16 text-white'>
+      <WorkAnnotationContainer className='mt-6 text-white'>
         <div className='flex flex-col gap-4'>
-          <h2 className='text-5xl font-medium max-w-5xl dxl:text-3xl'>{quote}</h2>
-          <span className='font-serif text-light-green text-lg'>- {author}, {game}</span>
+          <h2 className='text-4xl font-medium max-w-5xl dxl:text-3xl'>{quote}</h2>
+          <span className='font-serif text-light-green text-base'>- {author}, {game}</span>
         </div>
         <p className='text-lg'>{description}</p>
       </WorkAnnotationContainer>

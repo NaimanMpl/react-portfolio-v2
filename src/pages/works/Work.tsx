@@ -1,14 +1,15 @@
 import { motion, useScroll, useTransform, Variants } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ReactNode, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { ReactNode, useEffect, useLayoutEffect, useRef } from 'react'
 import { smoothEase } from '../../anim'
-import minecraftBg from '../../assets/minecraftclonebg.png'
 import Header from '../../components/Header'
 import WorkImageContainer from '../../components/work/WorkImageContainer'
-import { CursorProvider, useCursor } from '../../contexts/CursorContext'
+import { useCursor } from '../../contexts/CursorContext'
 import { getProject } from '../../projects'
 import Annotation from '../../ui/Annotation'
+import SonicQuote from '../../components/SonicQuote'
+import sonicBg from '../../assets/sonic-bg-1.webp'
 
 interface WorkProps {
   children: ReactNode,
@@ -16,6 +17,7 @@ interface WorkProps {
   description: string,
   background: string,
   link: string | null,
+  quote: ReactNode
 }
 
 const transition = [0.6, 0.01, -0.05, 0.9]
@@ -45,7 +47,7 @@ const letterAnimation: Variants = {
   }
 }
 
-const Work = ({ link, children, title, description, background }: WorkProps) => {
+const Work = ({ link, children, title, description, background, quote }: WorkProps) => {
 
   const { scrollYProgress } = useScroll();
   const scale = useTransform(scrollYProgress, [0, 1], [ 1, 1.15]);
@@ -170,6 +172,7 @@ const Work = ({ link, children, title, description, background }: WorkProps) => 
               })}
             </WorkImageContainer>
           </div>
+          {quote}
         </motion.div>
       </motion.div>
     </>
