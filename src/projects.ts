@@ -1,9 +1,9 @@
 import evylImg2 from './assets/evyl-2.png';
 import evylImg3 from './assets/evyl-3.png';
 import { default as evylBg, default as evylImg1 } from './assets/evyl.png';
-import minecraftImg1 from './assets/minecraftclone-1.webp';
+import minecraftImg1 from './assets/minecraftclone-1.png';
 import minecraftImg2 from './assets/minecraftclone-2.png';
-import minecraftImg3 from './assets/minecraftclone-3.jpeg';
+import minecraftImg3 from './assets/minecraftclone-3.png';
 import minecraftBg from './assets/minecraftclonebg.png';
 import sonicBg1 from './assets/sonic-bg-1.webp';
 import sonic2006bg from './assets/sonic-bg-2006-2.webp';
