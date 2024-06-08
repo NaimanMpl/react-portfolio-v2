@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import arrow from '../../assets/arrow.svg';
 import { useWorkCardData } from '../../contexts/WorkCardContext';
 
 interface WorkCardProps {
@@ -81,8 +82,11 @@ const WorkCard = ({ index, href, title, description }: WorkCardProps) => {
         exit={{ opacity: 0 }}
         transition={transition}
       >
-        <Link to={href}>
+        <Link to={href} className='flex items-center gap-4'>
           <motion.p variants={opacityExitFadeOut} className='font-serif text-6xl dxl:text-4xl'>{title}</motion.p>
+          <div className='w-12 h-12 border-[2px] border-solid border-white rounded-full p-1 dxl:w-8 dxl:h-8'>
+            <img className='w-full h-full' src={arrow} alt="Go" />
+          </div>
         </Link>
         <motion.p className='text-lg' variants={opacityExitFadeOut}>{description}</motion.p>
       </motion.div>
